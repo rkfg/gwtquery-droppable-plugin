@@ -75,6 +75,9 @@ public class DragAndDropManagerImpl extends DragAndDropManager {
     public void drag(DragContext ctx, GqEvent e) {
         Element draggable = ctx.getDraggable();
         DraggableHandler draggableHandler = DraggableHandler.getInstance(draggable);
+        if (draggableHandler == null) {
+            return;
+        }
         Collection<Element> droppables = getDroppablesByScope(draggableHandler.getOptions().getScope());
         if (droppables == null || droppables.size() == 0) {
             return;
